@@ -1,0 +1,40 @@
+<title>Add Student</title>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<body style="background-image:url('{% static "images/bg2.jpg" %}'); background-repeat:no-repeat;background-size:cover;">>
+    <center>
+    <h1>Show Student Details</h1>
+    <table border="2">
+        <thead>
+            <tr>
+                <th>STUDENT NAME</th>
+                <th>EMAIL ADDRESS</th>
+                <th>AGE</th>
+                <th>JOINING DATE</th>
+                <th>COURSE</th>
+                <th>COURSE FEE</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in students %}
+            <tr>
+                <td>{{s.student_name}}</td>
+                <td>{{s.student_address}}</td>
+                <td>{{s.student_age}}</td>
+                <td>{{s.joining_date}}</td>
+               
+                <td>{{s.course.course_name}}</td>
+                <td>{{s.course.fee}}</td>
+
+                <td><a href="{% url 'editstudent' s.id %}">Edit</a></td>
+                <td><a href="{% url 'deletestudent' s.id %}">Delete</a></td>
+
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</center>
+</body>
+{% endblock %}
